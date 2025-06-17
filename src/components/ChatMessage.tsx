@@ -12,7 +12,10 @@ const allowBlobUrlTransform: UrlTransform = (url, key, node) => {
   if (url.startsWith('blob:') || url.startsWith('data:')) {
     return url;
   }
-  return defaultUrlTransform(url, key, node);
+  // Fallback to the default transformer (its signature only expects the URL)
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return defaultUrlTransform(url);
 };
 
 // Lazy-load heavy syntax-highlighter only when a code block is actually rendered
@@ -203,7 +206,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                       </React.Suspense>
                     </div>
                   ) : (
-                    <code className="bg-muted px-1 py-0.5 rounded text-sm font-mono" {...rest}>
+                    <code className="bg-muted px-1 py-0.5 rounded text-sm font-mono text-foreground" {...rest}>
                       {children}
                     </code>
                   );
@@ -232,7 +235,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                             {...props}
                           />
                           {alt && alt !== 'Generated image' && (
-                            <p className="text-sm text-muted-foreground mt-2 italic">
+                            <p className="text-sm text-gray-100 dark:text-muted-foreground mt-2 italic">
                               {alt}
                             </p>
                           )}
@@ -276,7 +279,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                   <li className="leading-relaxed">{children}</li>
                 ),
                 strong: ({ children }) => (
-                  <strong className="font-semibold text-primary">{children}</strong>
+                  <strong className="font-semibold text-primary dark:text-white">{children}</strong>
                 ),
                 em: ({ children }) => (
                   <em className="italic text-muted-foreground">{children}</em>
