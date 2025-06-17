@@ -183,7 +183,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                   const language = match ? match[1] : '';
                   
                   return match ? (
-                    <div className="relative my-4">
+                    <div className="relative my-4 overflow-x-auto">
                       <div className="flex items-center justify-between bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-t-md">
                         <span className="font-medium">{language.toUpperCase()}</span>
                         <button 
@@ -206,7 +206,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                       </React.Suspense>
                     </div>
                   ) : (
-                    <code className="bg-muted px-1 py-0.5 rounded text-sm font-mono text-foreground" {...rest}>
+                    <code className="bg-muted px-1 py-0.5 rounded text-sm font-mono text-foreground whitespace-pre-wrap break-words" {...rest}>
                       {children}
                     </code>
                   );
@@ -261,13 +261,13 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                   </blockquote>
                 ),
                 h1: ({ children }) => (
-                  <h1 className="text-xl font-bold mb-3 text-primary">{children}</h1>
+                  <h1 className="text-xl font-bold mb-3 text-primary dark:text-white">{children}</h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="text-lg font-semibold mb-2 text-primary/90">{children}</h2>
+                  <h2 className="text-lg font-semibold mb-2 text-primary/90 dark:text-white">{children}</h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-base font-medium mb-2 text-primary/80">{children}</h3>
+                  <h3 className="text-base font-medium mb-2 text-primary/80 dark:text-white">{children}</h3>
                 ),
                 ul: ({ children }) => (
                   <ul className="list-disc list-inside space-y-1 my-3">{children}</ul>
