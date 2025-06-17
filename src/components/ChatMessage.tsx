@@ -276,7 +276,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                   <ol className="list-decimal list-inside space-y-1 my-3">{children}</ol>
                 ),
                 li: ({ children }) => (
-                  <li className="leading-relaxed">{children}</li>
+                  <li className="leading-relaxed [&>p]:inline [&>p]:m-0">{children}</li>
                 ),
                 strong: ({ children }) => (
                   <strong className="font-semibold text-primary dark:text-white">{children}</strong>
